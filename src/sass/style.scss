@@ -1,0 +1,165 @@
+@use "./colors" as *;
+@use "./sizing" as *;
+@use "./mixins" as *;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  &:focus {
+    outline-style: dotted;
+    outline-color: $amber;
+    outline-width: 3px;
+    outline-offset: 1px;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  min-height: 100vh;
+  background-color: $black;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: lighten($black, 10);
+  @include pill-shape;
+}
+
+::-webkit-scrollbar-thumb {
+  @include rose-gradient;
+  @include pill-shape;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: lighten($orange-pantone, 5);
+}
+
+header,
+main,
+footer {
+  padding: 0 1rem;
+}
+
+header {
+  @include flex-row;
+  @include rose-gradient;
+  justify-content: center;
+  min-height: $header-height;
+  color: $black;
+  font-size: 1.5rem;
+  border-bottom: 3px solid $rose;
+  box-shadow: 0 0 1rem $rose;
+}
+
+main {
+  @include flex-column;
+  flex: 1;
+  gap: 1rem;
+
+  fieldset {
+    @include flex-row;
+    @include pill-shape;
+    @include blue-gradient;
+    justify-content: center;
+    height: 6rem;
+    gap: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    max-width: 800px;
+    margin: 0 auto;
+
+    input {
+      @include pill-shape;
+      @include font-inherit;
+      width: 8rem;
+      text-align: center;
+
+      &[type="submit"] {
+        @include rose-gradient;
+      }
+
+      &[type="number"] {
+        background-color: $white;
+
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+      }
+    }
+  }
+
+  div.answer-box {
+    @include flex-row;
+    height: 3rem;
+    min-width: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding-bottom: 1rem;
+
+    h2 {
+      margin: 0 auto;
+      color: $amber;
+    }
+  }
+}
+
+footer {
+  @include flex-row;
+  justify-content: space-between;
+  height: $footer-height;
+  color: $amber;
+  font-size: 1.5rem;
+
+  button {
+    @include pill-shape;
+    @include font-inherit;
+    @include rose-gradient;
+    height: 2rem;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+  }
+}
+
+dialog[open] {
+  @include flex-column;
+  background-color: $white;
+  color: $black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  height: 80%;
+  width: 80%;
+  max-width: 800px;
+
+  pre {
+    background-color: $black;
+    color: $white;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  input {
+    @include pill-shape;
+    @include font-inherit;
+    @include rose-gradient;
+    width: 100px;
+  }
+}

@@ -1,0 +1,33 @@
+@use "./colors" as *;
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  align-items: center;
+}
+
+@mixin pill-shape {
+  border: none;
+  border-radius: 400px;
+  padding: 0 1rem;
+  height: 3rem;
+}
+
+@mixin font-inherit {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+@mixin rose-gradient {
+  background-image: linear-gradient(to bottom right, $orange-pantone, $rose);
+}
+
+@mixin blue-gradient {
+  background-image: linear-gradient(to bottom right, $azure, $blue-violet);
+}
